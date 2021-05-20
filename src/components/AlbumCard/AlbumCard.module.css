@@ -1,0 +1,83 @@
+.AlbumCard {
+  width: calc(25% - 20px);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.albumProps {
+  display: grid;
+  box-shadow: var(--shadow);
+}
+
+.imgContainer {
+  width: 100%;
+  overflow: hidden;
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--color-bright-green);
+}
+
+.imgContainer img {
+  width: 100%;
+}
+
+.main {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: flex-end;
+  background-color: var(--color-fade);
+  padding: 1rem 0.5rem;
+}
+
+.name {
+  margin: 0;
+}
+
+.AlbumCard p {
+  font-size: 0.8rem;
+}
+
+.artists {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.preview {
+  display: block;
+  background-color: var(--color-green);
+  padding: 0.5rem;
+  font-weight: bold;
+  width: 100%;
+  box-shadow: var(--shadow);
+  border-radius: 999px;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transition-01);
+}
+
+.preview:hover {
+  background-color: var(--color-bright-green);
+}
+
+@media (max-width: 768px) {
+  .AlbumCard {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .AlbumCard {
+    width: calc(50% - 20px);
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .AlbumCard {
+    width: calc(100% - 20px);
+    margin: 10px;
+  }
+}

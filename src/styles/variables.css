@@ -1,0 +1,33 @@
+:root {
+  /* COLOR PALETTE */
+  --color-black: #001905;
+  --color-white: #ffffff;
+  --color-gray: #777777;
+  --color-green: #1db954;
+  --color-bright-green: #1ed760;
+  --color-red: #ff1818;
+  --color-bg: #f3f3f3;
+  --color-text: #1b1b1b;
+  --color-fade: #f3f3f3aa;
+
+  /* Shadows */
+  --shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5),
+    0 20px 30px -10px rgba(0, 0, 0, 0.5);
+
+  /* transitions */
+  --transition-01: all 0.1s ease-out;
+  --transition-02: all 0.2s ease-out;
+
+  /* scale */
+  --scale-hover: scale(1.025);
+  --scale-active: scale(1);
+}
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1b1b1b;
+    --color-text: #f3f3f3;
+    --color-fade: #1b1b1baa;
+  }
+}

@@ -1,0 +1,31 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
+.searchBox {
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-fade);
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+}
+
+.searchText {
+  margin-left: 10px;
+  font-weight: bold;
+  color: var(--color-gray);
+}
+
+@media (max-width: 480px) {
+  .searchText {
+    font-size: 0.85rem;
+  }
+}

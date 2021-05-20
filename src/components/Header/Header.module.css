@@ -1,0 +1,27 @@
+.Header {
+  /* position: sticky; */
+  display: flex;
+  top: 0;
+  width: 100vw;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  z-index: 100;
+  background: var(--color-fade);
+  color: var(--color-text);
+}
+
+.Logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.Logo img {
+  width: 50px;
+}
+
+.Header h1 {
+  margin: 0;
+  text-decoration: none;
+}

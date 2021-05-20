@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
+.intro {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  background-color: var(--color-bg);
+}
+
+.intro h1 {
+  margin: 0;
+  color: var(--color-bright-green);
+}
+
+.intro span {
+  color: var(--color-gray);
+}

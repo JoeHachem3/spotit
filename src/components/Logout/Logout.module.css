@@ -1,0 +1,17 @@
+.Logout {
+  border: 0;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border-radius: 999px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: var(--transition-01);
+}
+
+.Logout:hover {
+  color: var(--color-red);
+}
+
+.header {
+  margin-left: auto;
+}

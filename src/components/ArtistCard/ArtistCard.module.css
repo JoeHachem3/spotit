@@ -1,0 +1,84 @@
+.ArtistCard {
+  width: calc(25% - 20px);
+  margin: 10px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: grid;
+  cursor: pointer;
+  transition: var(--transition-01);
+}
+
+.ArtistCard:hover {
+  transform: var(--scale-hover);
+}
+
+.imgContainer {
+  width: 100%;
+  overflow: hidden;
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--color-bright-green);
+}
+
+.imgContainer img {
+  width: 100%;
+}
+
+.main {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: flex-end;
+  background-color: var(--color-fade);
+  padding: 1rem 0.5rem;
+}
+
+.name {
+  margin: 0;
+}
+
+.ArtistCard p {
+  font-size: 0.8rem;
+}
+
+.rating {
+  display: flex;
+  gap: 0.1rem;
+}
+
+.rating div {
+  width: 1rem;
+  height: 1rem;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+@media (max-width: 768px) {
+  .ArtistCard {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ArtistCard {
+    width: calc(50% - 20px);
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ArtistCard {
+    width: calc(100% - 20px);
+    margin: 10px;
+  }
+}

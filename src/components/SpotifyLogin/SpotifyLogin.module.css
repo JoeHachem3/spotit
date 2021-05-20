@@ -1,0 +1,25 @@
+.SpotifyLogin {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  text-decoration: none;
+  background-color: var(--color-bg);
+}
+
+.SpotifyLogin:hover span {
+  color: var(--color-bright-green);
+}
+
+.SpotifyLogin span {
+  font-weight: bold;
+  color: var(--color-green);
+  transition: var(--transition-01);
+}
+
+.SpotifyLogin img {
+  height: 30px;
+}
