@@ -29,9 +29,8 @@ const App = () => {
   );
 
   const pathname = useLocation().pathname;
-  console.log(accessToken);
+
   useEffect(() => {
-    console.log(localStorage.getItem('accessToken'));
     if (!accessToken) {
       const params = new URLSearchParams(pathname.replace('/', '?'));
       const accessTokenParam = params.get('access_token');

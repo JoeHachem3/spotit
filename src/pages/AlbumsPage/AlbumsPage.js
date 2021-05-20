@@ -44,14 +44,14 @@ const AlbumsPage = (props) => {
       requests
         .getArtistById(props.match.params.id)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setCurrentArtist({ id: res.data.id, name: res.data.name });
           setIsLoading(false);
         })
         .catch((err) => {
           setIsLoading(false);
           setError(err);
-          console.log(err);
+          // console.log(err);
         });
     }
     if (!albums) {
@@ -59,7 +59,7 @@ const AlbumsPage = (props) => {
       requests
         .getArtistAlbums(props.match.params.id, [], 20)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           res.data.items.forEach(
             (item) =>
               (item.artists = item.artists.map((artist) => artist.name)),
@@ -71,7 +71,7 @@ const AlbumsPage = (props) => {
         .catch((err) => {
           setIsLoading(false);
           setError(err);
-          console.log(err);
+          // console.log(err);
         });
     }
 
@@ -86,7 +86,7 @@ const AlbumsPage = (props) => {
               requests
                 .getNext(nextAlbumsUrl)
                 .then((res) => {
-                  console.log(res);
+                  // console.log(res);
                   res.data.items.forEach(
                     (item) =>
                       (item.artists = item.artists.map(
@@ -101,7 +101,7 @@ const AlbumsPage = (props) => {
                   setIsLoading(false);
                   setIsEnd(false);
                   setError(err);
-                  console.log(err);
+                  // console.log(err);
                 });
             }
           }

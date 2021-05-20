@@ -67,7 +67,7 @@ const ArtistsPage = (props) => {
               requests
                 .getNext(nextArtistsUrl)
                 .then((res) => {
-                  console.log(res);
+                  // console.log(res);
                   setNextArtistsUrl(res.data.artists.next);
                   setArtists([...artists, ...res.data.artists.items]);
                   setIsEnd(false);
@@ -75,7 +75,7 @@ const ArtistsPage = (props) => {
                 .catch((err) => {
                   setIsLoading(false);
                   setError(err);
-                  console.log(err);
+                  // console.log(err);
                 });
             }
           }
@@ -110,7 +110,7 @@ const ArtistsPage = (props) => {
     requests
       .getSearch(value, ['artist'], 20)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setArtists(res.data.artists.items);
         setLastSearch(value);
         setIsLoading(false);
@@ -119,7 +119,7 @@ const ArtistsPage = (props) => {
       .catch((err) => {
         setIsLoading(false);
         setError(err);
-        console.log(err);
+        // console.log(err);
       });
   };
 
