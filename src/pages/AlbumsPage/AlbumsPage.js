@@ -146,7 +146,7 @@ const AlbumsPage = (props) => {
     );
   }
 
-  let body = isLoading ? <Spinner /> : gridLayout;
+  let body = isLoading ? <Spinner className={'fixed'} /> : gridLayout;
   let footerContent = isEnd ? (
     nextAlbumsUrl ? (
       <Spinner />
