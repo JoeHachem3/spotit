@@ -6,7 +6,7 @@ const domain =
     : 'https://joehachem3.github.io/spotit';
 
 export const authUrl = `https://accounts.spotify.com/authorize?client_id=6499b09693a64a09ae4d961182500473&redirect_uri=${domain}/%23/&response_type=token&state=123`;
-console.log(authUrl);
+
 export const getSearch = (value, types = [], lim, off = 0) => {
   const q = value ? `q=${value}` : '';
   const type = types.length ? `type=${types.join(',')}` : '';
