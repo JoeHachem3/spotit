@@ -82,10 +82,8 @@ const ArtistsPage = (props) => {
         }
       }
     };
-    console.log('create');
     window.addEventListener('scroll', scrollFct);
     return () => {
-      console.log('remove');
       window.removeEventListener('scroll', scrollFct);
     };
   }, [

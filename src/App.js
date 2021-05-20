@@ -32,14 +32,11 @@ const App = () => {
   );
 
   const pathname = useLocation().pathname;
-  console.log(pathname);
 
   useEffect(() => {
     if (!accessToken) {
       const params = new URLSearchParams(pathname.replace('/', '?'));
-      console.log(params);
       const accessTokenParam = params.get('access_token');
-      console.log(accessTokenParam);
       if (accessTokenParam) {
         const date = new Date().getTime();
         const expiresInParam = parseInt(params.get('expires_in')) * 1000;
@@ -67,6 +64,7 @@ const App = () => {
         />
         {/* <Route exact path='/artists' component={ArtistsPage} /> */}
         <Route exact path='/artists/:id/albums' component={AlbumsPage} />
+        <Route path='/' render={() => <Redirect to='/' />} />
       </Switch>
       {next}
     </>
