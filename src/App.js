@@ -13,9 +13,6 @@ import AlbumsPage from './pages/AlbumsPage/AlbumsPage';
 import Header from './components/Header/Header';
 import * as actions from './store/actions/actions';
 const App = () => {
-  // private states
-  const [next, setNext] = useState(null);
-
   // public states
   const accessToken = useSelector((state) => state.accessToken);
 
@@ -32,8 +29,9 @@ const App = () => {
   );
 
   const pathname = useLocation().pathname;
-
+  console.log(accessToken);
   useEffect(() => {
+    console.log(localStorage.getItem('accessToken'));
     if (!accessToken) {
       const params = new URLSearchParams(pathname.replace('/', '?'));
       const accessTokenParam = params.get('access_token');
@@ -43,7 +41,6 @@ const App = () => {
         const expiresAt = date + expiresInParam;
         setAccessToken(accessTokenParam, expiresAt);
       }
-      setNext(<Redirect to='/' />);
     } else {
       const expiresAt = localStorage.getItem('expiresAt');
       const date = new Date().getTime();
@@ -62,11 +59,10 @@ const App = () => {
           path='/'
           component={accessToken ? ArtistsPage : LoginPage}
         />
-        {/* <Route exact path='/artists' component={ArtistsPage} /> */}
         <Route exact path='/artists/:id/albums' component={AlbumsPage} />
         <Route path='/' render={() => <Redirect to='/' />} />
       </Switch>
-      {next}
+      {accessToken ? null : <Redirect to='/' />}
     </>
   );
 };

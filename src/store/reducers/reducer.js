@@ -12,7 +12,7 @@ const initialState = {
 };
 
 const setAccessToken = (state, action) => {
-  localStorage.setItem('accessToken', action.accessToken);
+  localStorage.setItem('accessToken', btoa(action.accessToken));
   localStorage.setItem('expiresAt', action.expiresAt);
   return updateObject(state, {
     accessToken: true,
@@ -22,7 +22,15 @@ const setAccessToken = (state, action) => {
 const removeAccessToken = (state, action) => {
   localStorage.removeItem('accessToken');
   localStorage.removeItem('expiresAt');
-  return updateObject(state, { accessToken: false, timer: null });
+  return updateObject(state, {
+    accessToken: false,
+    artists: null,
+    lastSearch: '',
+    currentArtist: null,
+    albums: null,
+    nextArtistsUrl: null,
+    nextAlbumsUrl: null,
+  });
 };
 
 const setArtists = (state, action) => {

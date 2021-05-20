@@ -16,7 +16,7 @@ export const getSearch = (value, types = [], lim, off = 0) => {
     `https://api.spotify.com/v1/search?${q}&${type}&${limit}&${offset}`,
     {
       headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+        Authorization: 'Bearer ' + atob(localStorage.getItem('accessToken')),
       },
     },
   );
@@ -32,7 +32,7 @@ export const getArtistAlbums = (id, groups = [], lim, off = 0) => {
     `https://api.spotify.com/v1/artists/${id}/albums?${include_groups}&${limit}&${offset}`,
     {
       headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+        Authorization: 'Bearer ' + atob(localStorage.getItem('accessToken')),
       },
     },
   );
@@ -41,7 +41,7 @@ export const getArtistAlbums = (id, groups = [], lim, off = 0) => {
 export const getArtistById = (id) => {
   return axios.get(`https://api.spotify.com/v1/artists/${id}`, {
     headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+      Authorization: 'Bearer ' + atob(localStorage.getItem('accessToken')),
     },
   });
 };
@@ -49,7 +49,7 @@ export const getArtistById = (id) => {
 export const getNext = (next) => {
   return axios.get(next, {
     headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+      Authorization: 'Bearer ' + atob(localStorage.getItem('accessToken')),
     },
   });
 };
