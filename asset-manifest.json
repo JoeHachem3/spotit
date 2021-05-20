@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/spotit/static/css/main.b65823a7.chunk.css",
-    "main.js": "/spotit/static/js/main.75347848.chunk.js",
-    "main.js.map": "/spotit/static/js/main.75347848.chunk.js.map",
-    "runtime-main.js": "/spotit/static/js/runtime-main.ef096afb.js",
-    "runtime-main.js.map": "/spotit/static/js/runtime-main.ef096afb.js.map",
-    "static/js/2.101d9f70.chunk.js": "/spotit/static/js/2.101d9f70.chunk.js",
-    "static/js/2.101d9f70.chunk.js.map": "/spotit/static/js/2.101d9f70.chunk.js.map",
-    "static/js/3.2a425207.chunk.js": "/spotit/static/js/3.2a425207.chunk.js",
-    "static/js/3.2a425207.chunk.js.map": "/spotit/static/js/3.2a425207.chunk.js.map",
+    "main.css": "/spotit/static/css/main.8c343a3a.chunk.css",
+    "main.js": "/spotit/static/js/main.fac9ea77.chunk.js",
+    "main.js.map": "/spotit/static/js/main.fac9ea77.chunk.js.map",
+    "runtime-main.js": "/spotit/static/js/runtime-main.72d72f8e.js",
+    "runtime-main.js.map": "/spotit/static/js/runtime-main.72d72f8e.js.map",
+    "static/js/2.b71e9c90.chunk.js": "/spotit/static/js/2.b71e9c90.chunk.js",
+    "static/js/2.b71e9c90.chunk.js.map": "/spotit/static/js/2.b71e9c90.chunk.js.map",
+    "static/js/3.cf07cb4a.chunk.js": "/spotit/static/js/3.cf07cb4a.chunk.js",
+    "static/js/3.cf07cb4a.chunk.js.map": "/spotit/static/js/3.cf07cb4a.chunk.js.map",
     "index.html": "/spotit/index.html",
-    "static/css/main.b65823a7.chunk.css.map": "/spotit/static/css/main.b65823a7.chunk.css.map",
-    "static/js/2.101d9f70.chunk.js.LICENSE.txt": "/spotit/static/js/2.101d9f70.chunk.js.LICENSE.txt",
+    "static/css/main.8c343a3a.chunk.css.map": "/spotit/static/css/main.8c343a3a.chunk.css.map",
+    "static/js/2.b71e9c90.chunk.js.LICENSE.txt": "/spotit/static/js/2.b71e9c90.chunk.js.LICENSE.txt",
     "static/media/defaultAlbum.7d7102cb.png": "/spotit/static/media/defaultAlbum.7d7102cb.png",
     "static/media/defaultArtist.b95d14e9.png": "/spotit/static/media/defaultArtist.b95d14e9.png",
     "static/media/search.f8c9c140.svg": "/spotit/static/media/search.f8c9c140.svg",
     "static/media/spotifyLogo.bc1a3e4c.svg": "/spotit/static/media/spotifyLogo.bc1a3e4c.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ef096afb.js",
-    "static/js/2.101d9f70.chunk.js",
-    "static/css/main.b65823a7.chunk.css",
-    "static/js/main.75347848.chunk.js"
+    "static/js/runtime-main.72d72f8e.js",
+    "static/js/2.b71e9c90.chunk.js",
+    "static/css/main.8c343a3a.chunk.css",
+    "static/js/main.fac9ea77.chunk.js"
   ]
 }
