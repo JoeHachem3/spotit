@@ -1,6 +1,8 @@
 export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN';
 export const REMOVE_ACCESS_TOKEN = 'REMOVE_ACCESS_TOKEN';
 
+export const SET_TIMEOUT_ID = 'SET_TIMEOUT_ID';
+
 export const SET_ARTISTS = 'SET_ARTISTS';
 export const REMOVE_ARTISTS = 'REMOVE_ARTISTS';
 

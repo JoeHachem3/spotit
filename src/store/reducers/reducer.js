@@ -3,6 +3,7 @@ import { updateObject } from '../../shared/utility';
 
 const initialState = {
   accessToken: localStorage.getItem('accessToken') ? true : false,
+  timeOutId: null,
   artists: null,
   lastSearch: '',
   currentArtist: null,
@@ -22,14 +23,22 @@ const setAccessToken = (state, action) => {
 const removeAccessToken = (state, action) => {
   localStorage.removeItem('accessToken');
   localStorage.removeItem('expiresAt');
+  if (state.timeOutId) clearTimeout(state.timeOutId);
   return updateObject(state, {
     accessToken: false,
+    timeOutId: null,
     artists: null,
     lastSearch: '',
     currentArtist: null,
     albums: null,
     nextArtistsUrl: null,
     nextAlbumsUrl: null,
+  });
+};
+
+const setTimeOutId = (state, action) => {
+  return updateObject(state, {
+    timeOutId: action.timeOutId,
   });
 };
 
@@ -93,6 +102,8 @@ const reducer = (state = initialState, action) => {
       return setAccessToken(state, action);
     case actionTypes.REMOVE_ACCESS_TOKEN:
       return removeAccessToken(state, action);
+    case actionTypes.SET_TIMEOUT_ID:
+      return setTimeOutId(state, action);
     case actionTypes.SET_ARTISTS:
       return setArtists(state, action);
     case actionTypes.REMOVE_ARTISTS:

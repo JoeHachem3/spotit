@@ -14,6 +14,13 @@ export const removeAccessToken = () => {
   };
 };
 
+export const setTimeOutId = (timeOutId) => {
+  return {
+    type: actionTypes.SET_TIMEOUT_ID,
+    timeOutId,
+  };
+};
+
 export const setArtists = (artists) => {
   return {
     type: actionTypes.SET_ARTISTS,

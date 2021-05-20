@@ -27,6 +27,10 @@ const App = () => {
     () => dispatch(actions.removeAccessToken()),
     [dispatch],
   );
+  const setTimeOutId = useCallback(
+    (timeOutId) => dispatch(actions.setTimeOutId(timeOutId)),
+    [dispatch],
+  );
 
   const pathname = useLocation().pathname;
 
@@ -38,17 +42,22 @@ const App = () => {
         const date = new Date().getTime();
         const expiresInParam = parseInt(params.get('expires_in')) * 1000;
         const expiresAt = date + expiresInParam;
+        const timeOutId = setTimeout(() => {
+          removeAccessToken();
+        }, expiresInParam);
+        setTimeOutId(timeOutId);
         setAccessToken(accessTokenParam, expiresAt);
       }
     } else {
       const expiresAt = localStorage.getItem('expiresAt');
       const date = new Date().getTime();
 
-      setTimeout(() => {
+      const timeOutId = setTimeout(() => {
         removeAccessToken();
       }, expiresAt - date);
+      setTimeOutId(timeOutId);
     }
-  }, [accessToken, pathname, setAccessToken, removeAccessToken]);
+  }, [accessToken, pathname, setAccessToken, removeAccessToken, setTimeOutId]);
   return (
     <>
       <Header accessToken={accessToken} />
