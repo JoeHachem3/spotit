@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { authUrl } from '../../api/requests';
 import * as actions from '../../store/actions/actions';
 import SpotifyLogin from '../../components/SpotifyLogin/SpotifyLogin';
 import classes from './LoginPage.module.css';
@@ -38,7 +39,7 @@ const LoginPage = (props) => {
       <h1 className={classes.welcome}>
         <span>Welcome to Spotit,</span> Get started here
       </h1>
-      <SpotifyLogin href='https://accounts.spotify.com/authorize?client_id=6499b09693a64a09ae4d961182500473&redirect_uri=http://localhost:3000/login&response_type=token&state=123' />
+      <SpotifyLogin href={authUrl} />
     </section>
   );
 };
