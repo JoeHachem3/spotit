@@ -5,10 +5,9 @@ import Logout from '../Logout/Logout';
 import classes from './Header.module.css';
 
 const Header = (props) => {
-  console.log(props.accessToken);
   return (
     <nav className={classes.Header}>
-      <Link to={'/artists'} className={classes.Logo}>
+      <Link to={'/'} className={classes.Logo}>
         <img src={logo} alt='' />
         <h1>Spotit</h1>
       </Link>

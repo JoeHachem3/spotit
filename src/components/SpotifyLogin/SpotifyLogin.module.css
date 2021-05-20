@@ -1,6 +1,6 @@
 .SpotifyLogin {
   padding: 0.5rem 1rem;
-  border-radius: 999px;
+  border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow);
   display: flex;
   justify-content: center;

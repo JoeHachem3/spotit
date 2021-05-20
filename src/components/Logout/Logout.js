@@ -6,16 +6,11 @@ import classes from './Logout.module.css';
 const Logout = (props) => {
   const dispatch = useDispatch();
   const removeAccessToken = () => dispatch(actions.removeAccessToken());
-  const logout = () => {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('expiresAt');
-    removeAccessToken();
-  };
 
   return (
     <button
       className={[classes.Logout, classes[props.className]].join(' ')}
-      onClick={logout}
+      onClick={removeAccessToken}
     >
       Logout
     </button>

@@ -15,8 +15,6 @@ const SearchBar = (props) => {
     setTimeout(() => {
       if (searchInput.current) {
         const currentValue = searchInput.current.value.trim();
-        console.log(value);
-        console.log(currentValue);
         if (currentValue !== lastSearch && value === currentValue) {
           props.search(value);
         }

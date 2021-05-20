@@ -2,7 +2,7 @@
   /* position: sticky; */
   display: flex;
   top: 0;
-  width: 100vw;
+  width: 100%;
   padding: 1rem;
   box-shadow: var(--shadow);
   z-index: 100;

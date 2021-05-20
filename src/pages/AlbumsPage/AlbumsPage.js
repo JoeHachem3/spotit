@@ -2,10 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import GridLayout from '../../components/GridLayout/GridLayout';
-import * as actions from '../../store/actions/actions';
-import * as requests from '../../api/requests';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
 import Spinner from '../../components/Spinner/Spinner';
+import ErrorHandler from '../../components/ErrorHandler/ErrorHandler';
+import * as actions from '../../store/actions/actions';
+import * as requests from '../../api/requests';
 import defaultAlbum from '../../assets/imgs/defaultAlbum.png';
 import classes from './AlbumsPage.module.css';
 
@@ -37,16 +38,24 @@ const AlbumsPage = (props) => {
   );
 
   useEffect(() => {
+    if (error) return;
     if (!currentArtist) {
+      setIsLoading(true);
       requests
         .getArtistById(props.match.params.id)
         .then((res) => {
           console.log(res);
           setCurrentArtist({ id: res.data.id, name: res.data.name });
+          setIsLoading(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err);
+          console.log(err);
+        });
     }
     if (!albums) {
+      setIsLoading(true);
       requests
         .getArtistAlbums(props.match.params.id, [], 20)
         .then((res) => {
@@ -57,8 +66,13 @@ const AlbumsPage = (props) => {
           );
           setAlbums(res.data.items);
           setNextAlbumsUrl(res.data.next);
+          setIsLoading(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err);
+          console.log(err);
+        });
     }
 
     const scrollFct = () => {
@@ -83,7 +97,12 @@ const AlbumsPage = (props) => {
                   setNextAlbumsUrl(res.data.next);
                   setIsEnd(false);
                 })
-                .catch((err) => console.log(err));
+                .catch((err) => {
+                  setIsLoading(false);
+                  setIsEnd(false);
+                  setError(err);
+                  console.log(err);
+                });
             }
           }
         }
@@ -101,6 +120,7 @@ const AlbumsPage = (props) => {
     currentArtist,
     albums,
     nextAlbumsUrl,
+    error,
     setNextAlbumsUrl,
     setCurrentArtist,
     setAlbums,
@@ -139,11 +159,13 @@ const AlbumsPage = (props) => {
 
   return (
     <section className={classes.AlbumsPage}>
-      <div className={classes.intro}>
-        <h1>{currentArtist?.name}</h1>
-        <span>Albums</span>
-      </div>
-      {body}
+      <ErrorHandler error={error}>
+        <div className={classes.intro}>
+          <h1>{currentArtist?.name}</h1>
+          <span>Albums</span>
+        </div>
+        {body}
+      </ErrorHandler>
       <footer className={classes.footer} ref={footer}>
         {footerContent}
       </footer>

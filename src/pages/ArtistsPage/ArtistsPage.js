@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { numberToStringConverter } from '../../shared/utility';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import GridLayout from '../../components/GridLayout/GridLayout';
-import * as actions from '../../store/actions/actions';
-import * as requests from '../../api/requests';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import Spinner from '../../components/Spinner/Spinner';
+import ErrorHandler from '../../components/ErrorHandler/ErrorHandler';
+import * as actions from '../../store/actions/actions';
+import * as requests from '../../api/requests';
 import defaultArtist from '../../assets/imgs/defaultArtist.png';
 import classes from './ArtistsPage.module.css';
 
@@ -51,6 +53,7 @@ const ArtistsPage = (props) => {
   );
 
   useEffect(() => {
+    if (error) return;
     if (albums) removeAlbums();
     if (currentArtist) removeCurrentArtist();
     const scrollFct = () => {
@@ -69,7 +72,11 @@ const ArtistsPage = (props) => {
                   setArtists([...artists, ...res.data.artists.items]);
                   setIsEnd(false);
                 })
-                .catch((err) => console.log(err));
+                .catch((err) => {
+                  setIsLoading(false);
+                  setError(err);
+                  console.log(err);
+                });
             }
           }
         }
@@ -87,6 +94,7 @@ const ArtistsPage = (props) => {
     currentArtist,
     albums,
     nextArtistsUrl,
+    error,
     setNextArtistsUrl,
     setArtists,
     removeCurrentArtist,
@@ -94,6 +102,7 @@ const ArtistsPage = (props) => {
   ]);
 
   const search = (value) => {
+    if (error) setError(null);
     if (!value) {
       removeArtists();
       setLastSearch(value);
@@ -109,12 +118,16 @@ const ArtistsPage = (props) => {
         setIsLoading(false);
         setNextArtistsUrl(res.data.artists.next);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err);
+        console.log(err);
+      });
   };
 
   const goToArtist = (artist) => {
     setCurrentArtist({ id: artist.id, name: artist.name });
-    props.history.push(`/albums/${artist.id}`);
+    props.history.push(`/artists/${artist.id}/albums`);
   };
 
   let artistCards = artists?.map((artist) => (
@@ -123,7 +136,7 @@ const ArtistsPage = (props) => {
       redirect={() => goToArtist(artist)}
       image={artist.images[1]?.url || defaultArtist}
       name={artist.name}
-      followers={artist.followers.total}
+      followers={numberToStringConverter(artist.followers.total)}
       rating={artist.popularity / 20}
     />
   ));
@@ -144,14 +157,16 @@ const ArtistsPage = (props) => {
       <div className={classes.searchBox}>
         <SearchBar search={search} lastSearch={lastSearch} />
       </div>
-      <p className={classes.searchText}>
-        {artistCards
-          ? artistCards.length
-            ? `Showing results for '${lastSearch}'`
-            : `No Results Found for '${lastSearch}'`
-          : 'Type anything in the search box to get started!'}
-      </p>
-      {body}
+      <ErrorHandler error={error}>
+        <p className={classes.searchText}>
+          {artistCards
+            ? artistCards.length
+              ? `Showing results for '${lastSearch}'`
+              : `No Results Found for '${lastSearch}'`
+            : 'Type anything in the search box to get started!'}
+        </p>
+        {body}
+      </ErrorHandler>
       <footer className={classes.footer} ref={footer}>
         {footerContent}
       </footer>

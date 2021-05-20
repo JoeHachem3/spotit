@@ -21,19 +21,32 @@ const App = () => {
 
   // dispatch
   const dispatch = useDispatch();
-
+  const setAccessToken = useCallback(
+    (accessTokenParam, expiresAt) =>
+      dispatch(actions.setAccessToken(accessTokenParam, expiresAt)),
+    [dispatch],
+  );
   const removeAccessToken = useCallback(
     () => dispatch(actions.removeAccessToken()),
     [dispatch],
   );
 
   const pathname = useLocation().pathname;
+  console.log(pathname);
 
   useEffect(() => {
     if (!accessToken) {
-      if (pathname !== '/login') {
-        setNext(<Redirect to='/login' />);
+      const params = new URLSearchParams(pathname.replace('/', '?'));
+      console.log(params);
+      const accessTokenParam = params.get('access_token');
+      console.log(accessTokenParam);
+      if (accessTokenParam) {
+        const date = new Date().getTime();
+        const expiresInParam = parseInt(params.get('expires_in')) * 1000;
+        const expiresAt = date + expiresInParam;
+        setAccessToken(accessTokenParam, expiresAt);
       }
+      setNext(<Redirect to='/' />);
     } else {
       const expiresAt = localStorage.getItem('expiresAt');
       const date = new Date().getTime();
@@ -42,14 +55,18 @@ const App = () => {
         removeAccessToken();
       }, expiresAt - date);
     }
-  }, [accessToken, pathname, removeAccessToken]);
+  }, [accessToken, pathname, setAccessToken, removeAccessToken]);
   return (
     <>
       <Header accessToken={accessToken} />
       <Switch>
-        <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/artists' component={ArtistsPage} />
-        <Route exact path='/albums/:id' component={AlbumsPage} />
+        <Route
+          exact
+          path='/'
+          component={accessToken ? ArtistsPage : LoginPage}
+        />
+        {/* <Route exact path='/artists' component={ArtistsPage} /> */}
+        <Route exact path='/artists/:id/albums' component={AlbumsPage} />
       </Switch>
       {next}
     </>

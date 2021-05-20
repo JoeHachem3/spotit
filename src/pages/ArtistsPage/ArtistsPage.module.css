@@ -8,7 +8,7 @@
 .searchBox {
   padding: 1rem;
   box-shadow: var(--shadow);
-  border-radius: 999px;
+  border-radius: var(--border-radius-lg);
   display: flex;
   justify-content: center;
   align-items: center;
