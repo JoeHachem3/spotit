@@ -166,7 +166,7 @@ const ArtistsPage = (props) => {
           ) : (
             <>
               <span>Welcome,</span>
-              <>You can now search for you favorite artists!</>
+              <>You can now search for your favorite artists!</>
             </>
           )}
         </h4>
