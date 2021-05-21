@@ -1,3 +1,5 @@
+You can find it deployed on github pages [Spotit](https://joehachem3.github.io/spotit/).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
