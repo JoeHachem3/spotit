@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { numberToStringConverter } from '../../shared/utility';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import GridLayout from '../../containers/GridLayout/GridLayout';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import Spinner from '../../components/Spinner/Spinner';
-import ErrorHandler from '../../components/ErrorHandler/ErrorHandler';
+import ErrorHandler from '../../containers/ErrorHandler/ErrorHandler';
 import * as actions from '../../store/actions/actions';
 import * as requests from '../../api/requests';
 import defaultArtist from '../../assets/imgs/defaultArtist.png';
@@ -146,7 +146,7 @@ const ArtistsPage = (props) => {
     nextArtistsUrl ? (
       <Spinner />
     ) : (
-      <h3>You've Reached the End</h3>
+      <h4>You've Reached the End</h4>
     )
   ) : null;
 
@@ -156,13 +156,20 @@ const ArtistsPage = (props) => {
         <SearchBar search={search} lastSearch={lastSearch} />
       </div>
       <ErrorHandler error={error}>
-        <p className={classes.searchText}>
-          {artistCards
-            ? artistCards.length
-              ? `Showing results for '${lastSearch}'`
-              : `No Results Found for '${lastSearch}'`
-            : 'Type anything in the search box to get started!'}
-        </p>
+        <h4 className={classes.searchText}>
+          {artistCards ? (
+            artistCards.length ? (
+              `Showing results for '${lastSearch}'`
+            ) : (
+              `No Results Found for '${lastSearch}'`
+            )
+          ) : (
+            <>
+              <span>Welcome,</span>
+              <>You can now search for you favorite artists!</>
+            </>
+          )}
+        </h4>
         {body}
       </ErrorHandler>
       <footer className={classes.footer} ref={footer}>

@@ -8,7 +8,12 @@ const AlbumCard = (props) => {
         <div className={classes.imgContainer}>
           <img src={props.image} alt={props.name} />
         </div>
-        <a className={classes.preview} href={props.preview}>
+        <a
+          className={classes.preview}
+          href={props.preview}
+          target='_blank'
+          rel='noreferrer'
+        >
           <span>Preview on Spotify</span>
         </a>
       </div>

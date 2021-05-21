@@ -22,6 +22,10 @@ const SearchBar = (props) => {
     }, 500);
   };
 
+  const searchImgClick = (event) => {
+    searchInput.current.value ? search(event) : searchInput.current.focus();
+  };
+
   const search = (event) => {
     event.preventDefault();
     if (searchInput.current) {
@@ -42,7 +46,7 @@ const SearchBar = (props) => {
         placeholder='Search for an artist...'
         onChange={onChange}
       />
-      <img src={searchIcon} alt='' onClick={search} />
+      <img src={searchIcon} alt='' onClick={searchImgClick} />
     </form>
   );
 };

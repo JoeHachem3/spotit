@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import GridLayout from '../../containers/GridLayout/GridLayout';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
 import Spinner from '../../components/Spinner/Spinner';
-import ErrorHandler from '../../components/ErrorHandler/ErrorHandler';
+import ErrorHandler from '../../containers/ErrorHandler/ErrorHandler';
+import Back from '../../components/Back/Back';
 import * as actions from '../../store/actions/actions';
 import * as requests from '../../api/requests';
 import defaultAlbum from '../../assets/imgs/defaultAlbum.png';
@@ -131,7 +132,7 @@ const AlbumsPage = (props) => {
       name={album.name}
       artists={album.artists}
       tracks={album.total_tracks}
-      date={album.release_date}
+      date={album.release_date.split('-')[0]}
       preview={album.external_urls.spotify}
     />
   ));
@@ -151,7 +152,7 @@ const AlbumsPage = (props) => {
     nextAlbumsUrl ? (
       <Spinner />
     ) : (
-      <h3>You've Reached the End</h3>
+      <h4>You've Reached the End</h4>
     )
   ) : null;
 
@@ -161,6 +162,7 @@ const AlbumsPage = (props) => {
         <div className={classes.intro}>
           <h1>{currentArtist?.name}</h1>
           <span>Albums</span>
+          <Back onClick={props.history.goBack} className='albumsPageIntro' />
         </div>
         {body}
       </ErrorHandler>

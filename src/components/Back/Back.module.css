@@ -1,0 +1,20 @@
+.Back {
+  background: transparent;
+  border: 0;
+  color: var(--color-green);
+  cursor: pointer;
+  transition: var(--transition-01);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.Back:hover {
+  color: var(--color-bright-green);
+}
+
+.albumsPageIntro {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
