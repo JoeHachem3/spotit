@@ -10,6 +10,9 @@
   --color-text: #1b1b1b;
   --color-fade: #f3f3f3aa;
 
+  /* Filters */
+  --filter-color-text: brightness(0) invert(1) brightness(0.10588235294);
+
   /* Shadows */
   --shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5),
     0 20px 30px -10px rgba(0, 0, 0, 0.5);
@@ -35,5 +38,6 @@
     --color-bg: #1b1b1b;
     --color-text: #f3f3f3;
     --color-fade: #1b1b1baa;
+    --filter-color-text: brightness(0) invert(1) brightness(0.95294117647);
   }
 }

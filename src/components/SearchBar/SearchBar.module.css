@@ -34,4 +34,5 @@
   grid-row: 1;
   justify-self: end;
   cursor: pointer;
+  filter: var(--filter-color-text);
 }
